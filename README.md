@@ -4,6 +4,7 @@ IR remote control library for ESP32 RMT module (only NEC and only receiver)
 
 ## Using
 
+```c++
 #include "d1-esp32rmt.h"
 D1Esp32RMT esp32Rmt;
 
@@ -37,4 +38,4 @@ void setup()
     esp32Rmt.rxInit(0, 33);
     esp32Rmt.rxStart(rxRMTCallBack, NULL, 2, logRMTCallBack);
 };
-
+```
