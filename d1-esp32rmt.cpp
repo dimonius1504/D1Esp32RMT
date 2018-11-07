@@ -81,11 +81,7 @@ void D1Esp32RMT::taskRxFunction(void* parameters)
 
             };
             vRingbufferReturnItem(rb, (void*) item);
-        } else 
-        {
-            //Serial.println("rc task breaked");
-            //break;
-        }
+        };
     };
     if (obj->logCallBack)
         obj->logCallBack("RX task finished", true);
