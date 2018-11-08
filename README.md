@@ -6,6 +6,11 @@ IR remote control library for ESP32 RMT module (only NEC and only receiver)
 
 ```c++
 #include "d1-esp32rmt.h"
+
+#define rmtChannel 0
+#define gpioNum 33
+#define rmtTaskPriority 2
+
 D1Esp32RMT esp32Rmt;
 
 void rxRMTCallBack(uint16_t addr, uint16_t cmd, void* parameters)
@@ -33,12 +38,10 @@ void logRMTCallBack(const char* logString, bool newLine)
 	Serial.println(logString);
 }
 
-#define rmtChannel 0
-#define gpioNum 33
 void setup()
 {
     int someParameter = 1977;
     esp32Rmt.rxInit(rmtChannel, gpioNum);
-    esp32Rmt.rxStart(rxRMTCallBack, &someParameter, 2, logRMTCallBack);
+    esp32Rmt.rxStart(rxRMTCallBack, &someParameter, rmtTaskPriority, logRMTCallBack);
 };
 ```
