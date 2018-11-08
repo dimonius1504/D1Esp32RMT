@@ -59,8 +59,7 @@ void D1Esp32RMT::taskRxFunction(void* parameters)
                 if(res > 0) 
                 {
                     offset += res + 1;
-                    if (obj->rxCallBack)
-                        obj->rxCallBack(rmt_addr, rmt_cmd, obj->rxParameters);
+                    obj->rxCallBack(rmt_addr, rmt_cmd, obj->rxParameters);
 
                     if (obj->logCallBack)
                     {
