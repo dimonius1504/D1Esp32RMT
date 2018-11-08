@@ -10,16 +10,16 @@ D1Esp32RMT esp32Rmt;
 
 void rxRMTCallBack(uint16_t addr, uint16_t cmd, void* parameters)
 {
-    uint16_t w01, w02;
+    int someParameter = (int) *parameters;
     if (addr == 0xEF00)
     {
 	switch (cmd)
         {
     	    case 0xFC03:
-		doSome1(0xF0, "str");
+		doSome1(someParameter, "str");
         	break;
 	    case 0xFD02:
-        	doSome2(0xF1, "str2");
+        	doSome2(someParameter, "str2");
         	break;
         }
     }
@@ -35,7 +35,8 @@ void logRMTCallBack(const char* logString, bool newLine)
 
 void setup()
 {
+    int someParameter;
     esp32Rmt.rxInit(0, 33);
-    esp32Rmt.rxStart(rxRMTCallBack, NULL, 2, logRMTCallBack);
+    esp32Rmt.rxStart(rxRMTCallBack, &someParameter, 2, logRMTCallBack);
 };
 ```
