@@ -37,7 +37,7 @@ void logRMTCallBack(const char* logString, bool newLine)
 #define gpioNum 33
 void setup()
 {
-    int someParameter;
+    int someParameter = 1977;
     esp32Rmt.rxInit(rmtChannel, gpioNum);
     esp32Rmt.rxStart(rxRMTCallBack, &someParameter, 2, logRMTCallBack);
 };
