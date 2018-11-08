@@ -33,10 +33,12 @@ void logRMTCallBack(const char* logString, bool newLine)
 	Serial.println(logString);
 }
 
+#define rmtChannel 0
+#define gpioNum 33
 void setup()
 {
     int someParameter;
-    esp32Rmt.rxInit(0, 33);
+    esp32Rmt.rxInit(rmtChannel, gpioNum);
     esp32Rmt.rxStart(rxRMTCallBack, &someParameter, 2, logRMTCallBack);
 };
 ```
