@@ -2,7 +2,7 @@
 
 IR remote control library for ESP32 RMT module (only NEC and only receiver)
 
-## Using
+## Usage
 
 ```c++
 #include "d1-esp32rmt.h"
