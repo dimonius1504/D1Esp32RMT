@@ -24,7 +24,7 @@ uint32_t D1Esp32RMT::rxStart(d1Esp32RMT_rx* rxCb, void* taskParameters, UBaseTyp
     rxParameters = taskParameters;
     logCallBack = logCb;
 
-    xTaskCreatePinnedToCore(taskRxFunction, "D1Esp32RMT_rx_task", 2048, this, priority, &handleRxTask, 1);
+    xTaskCreatePinnedToCore(taskRxFunction, "D1Esp32RMT_rx_task", 8192, this, priority, &handleRxTask, 1);
 }
 
 uint32_t D1Esp32RMT::rxStop()
